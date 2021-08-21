@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <!-- css -->
+    <link rel="stylesheet" href="style.css">
+    <title>mac-book-shop</title>
+</head>
+
+<body>
+    <main>
+        <div class="d-flex justify-content-around container">
+            <div>
+                <img src="image/mac.png" alt="">
+            </div>
+            <div>
+                <h1>Customize your blue 24 inch <br> iMac with Apple M1 chip</h1>
+                <p>
+                    The M1 chip brings the Apple Neural Engine to the Mac, greatly accelerating machine learning (ML)
+                    tasks. Featuring Apple's most advanced 16-core architecture capable of 11 trillion operations per
+                    second, the Neural Engine in M1 enables up to 15x faster machine learning performanc
+                </p>
+                <br>
+                <br>
+                <p><strong>Memory</strong></p>
+                <button onclick="handleExtraCharge('8memory')">8gb unifield memory</button>
+                <button onclick="handleExtraCharge('16memory')">16gb unifield memory</button>
+                <br>
+                <br>
+                <p><strong>Storage</strong></p>
+                <button onclick="handleExtraCharge('256storage')">256GB ssd storage</button>
+                <button onclick="handleExtraCharge('512storage')">512GB ssd storage</button>
+                <button onclick="handleExtraCharge('1TBstorage')">1TB ssd storage</button>
+                <br>
+                <br>
+                <p><strong>Choose yor delivery option</strong></p>
+                <button onclick="handleExtraCharge('FREEdelevery')">Friday,Aug 25 FREE Prime Delevery</button>
+                <button onclick="handleExtraCharge('delevery')">Friday,Ar 21 Delevery Charge $20</button>
+
+
+
+                <div>
+                    <table class="table">
+
+                        <tbody>
+                            <tr>
+                                <td>Base Price</td>
+                                <td>$<span id="basePrice">1299</span></td>
+                            </tr>
+                            <tr>
+
+                                <td>Extra Memory cost</td>
+
+                                <td id="8memory-cost" >$<span id="16memory-cost" >0</span></td>
+                            </tr>
+                            <tr>
+                                <td>Extra storage Cost</td>
+                                <td >$<span id="storage-cost">0</span></td>
+                            </tr>
+
+                            <tr>
+                                <td>Delevery Charge</td>
+                                <td >$<span id="delevery-cost">0</span></td>
+                            </tr>
+                            <hr>
+                            <tr>
+                                <td>Total Price</td>
+                                <td>$<span id="totalPrice">1299</span></td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                    <div class="d-flex">
+                        <input id="promoCode" type="text">
+                        <button class="btn btn-danger" id="applyPromo">apply</button>
+                        <br>
+                        <br>
+
+                    </div>
+                </div>
+
+
+
+            </div>
+
+        </div>
+
+        <hr class="container">
+
+        <h1 class="total-amount">Total : $<span id="sub-total">1299</span></h1>
+        <br>
+
+
+    </main>
+    <script>
+
+        // const memoryBtn = document.getElementById("16memory");
+        // memoryBtn.addEventListener("click", function () {
+
+        //     const currentPrice = document.getElementById("totalPrice").innerText;
+        //     const currentTotalPrice = parseFloat(currentPrice);
+        //     // const basePrice = document.getElementById("basePrice").innerText;
+        //     // const basePriceAmount = parseFloat(basePrice);
+
+        //     const totalPrice = 80 + currentTotalPrice + 1299;
+
+        //     document.getElementById("memory-cost").innerText = "$80";
+        //     // document.getElementById("totalPrice").innerText = totalPrice;
+
+
+
+        // })
+        const applyPromo = document.getElementById("applyPromo");
+        applyPromo.addEventListener("click", function () {
+            const promoCode = document.getElementById("promoCode").value;
+            if (promoCode == "stevekaku") {
+                const subTotal = document.getElementById("totalPrice").innerText;
+                const subTotalAmount = parseFloat(subTotal);
+                const save = Math.round(subTotalAmount * 0.2);
+                const grandTotal = subTotalAmount - save;
+                document.getElementById("sub-total").innerText = grandTotal;
+            }
+            document.getElementById("promoCode").value = "";
+            //     console.log("withdraw button clicked");
+            //    const withdrawNumber = getInputNumber("withdraw-amount");
+
+        })
+
+        // function getInputNumber(id) {
+        //     const amount = document.getElementById(id).value;
+        //     console.log(amount);
+        //     const amountNumber = parseFloat(amount);
+        //     return amountNumber;
+        // }
+
+        function handleExtraCharge(type ) {
+                // const ticketCount = getInputValue(ticket);
+                // let ticketNewCount = ticketCount;
+                // if (isIncrease == true) {
+                //     ticketNewCount = ticketCount + 1;
+                // }
+                // if (isIncrease == false && ticketCount > 0) {
+                //     ticketNewCount = ticketCount - 1;
+                // }
+                // document.getElementById(type + '-cost').value = ticketNewCount;
+                // let ticketTotal = 0;
+                if (type == '8memory') {
+                    document.getElementById(type + '-cost').innerText = 0;
+                }
+                if (type == '16memory') {
+                    document.getElementById(type + '-cost').innerText = 180;
+                }
+                if (type == '256storage') {
+                    document.getElementById(type + '-cost').innerText = 0;
+                }
+                if (type == '512storage') {
+                    document.getElementById(type + '-cost').innerText = 100;
+                }
+                if (type == '1TBstorage') {
+                    document.getElementById(type + '-cost').innerText = 180;
+                }
+               
+                if (type == 'FREEdelevery') {
+                    document.getElementById(type + '-cost').innerText = 0;
+                }
+                if (type == 'delevery') {
+                    document.getElementById(type + '-cost').innerText = 20;
+                }
+                calculateTotal();
+            }
+            function calculateTotal() {
+                // const storageCost = getInputValue('storage');
+                // const memoryCost = getInputValue('memory'); 
+                const memoryCost = document.getElementById("16memory-cost").innerText;
+                const memoryCostAmount = parseFloat(memoryCost);
+                const storageCost = document.getElementById("storage-cost").innerText;
+                const storageCostAmount = parseFloat(storageCost);
+                const deleveryCost = document.getElementById("delevery-cost").innerText;
+                const deleveryCostAmount = parseFloat(deleveryCost);
+
+                const totalPrice = storageCostAmount + memoryCostAmount + deleveryCostAmount + 1299;
+                document.getElementById("totalPrice").innerText = totalPrice;
+                document.getElementById("sub-total").innerText = totalPrice;
+                
+                // //  document.querySelector('#tax-amount').innerText = '$' + tax;
+
+                //  const grandTotal = totalPrice - save;
+                //  document.getElementById("sub-total").innerText = grandTotal;
+            }
+            function getInputValue(type) {
+                const chargeType = document.getElementById(type + '-cost');
+                const costAmount = parseFloat(chargeType);
+                return costAmount;
+            }
+
+    </script>
+</body>
+
+</html>
