@@ -29,13 +29,13 @@
                 <br>
                 <br>
                 <p><strong>Memory</strong></p>
-                <button onclick="handleExtraCharge('8memory')">8gb unifield memory</button>
-                <button onclick="handleExtraCharge('16memory')">16gb unifield memory</button>
+                <button>8gb unifield memory</button>
+                <button onclick="handleExtraCharge('memory')">16gb unifield memory</button>
                 <br>
                 <br>
                 <p><strong>Storage</strong></p>
-                <button onclick="handleExtraCharge('256storage')">256GB ssd storage</button>
-                <button onclick="handleExtraCharge('512storage')">512GB ssd storage</button>
+                <button id="256storage-button">256GB ssd storage</button>
+                <button onclick="handleExtraCharge('storage')">512GB ssd storage</button>
                 <button onclick="handleExtraCharge('1TBstorage')">1TB ssd storage</button>
                 <br>
                 <br>
@@ -57,7 +57,7 @@
 
                                 <td>Extra Memory cost</td>
 
-                                <td id="8memory-cost" >$<span id="16memory-cost" >0</span></td>
+                                <td  >$<span id="memory-cost" >0</span></td>
                             </tr>
                             <tr>
                                 <td>Extra storage Cost</td>
@@ -150,25 +150,25 @@
                 // }
                 // document.getElementById(type + '-cost').value = ticketNewCount;
                 // let ticketTotal = 0;
-                if (type == '8memory') {
-                    document.getElementById(type + '-cost').innerText = 0;
-                }
-                if (type == '16memory') {
+                // if (type == 'memory') {
+                //     document.querySelector('.'+type + '-cost').innerText = 0;
+                // }
+                if (type == 'memory') {
                     document.getElementById(type + '-cost').innerText = 180;
                 }
-                if (type == '256storage') {
-                    document.getElementById(type + '-cost').innerText = 0;
-                }
-                if (type == '512storage') {
+                if (type == 'storage') {
                     document.getElementById(type + '-cost').innerText = 100;
                 }
-                if (type == '1TBstorage') {
-                    document.getElementById(type + '-cost').innerText = 180;
-                }
+                // if (type == '512storage') {
+                //     document.getElementById(type + '-cost').innerText = 100;
+                // }
+                // if (type == '1TBstorage') {
+                //     document.getElementById(type + '-cost').innerText = 180;
+                // }
                
-                if (type == 'FREEdelevery') {
-                    document.getElementById(type + '-cost').innerText = 0;
-                }
+                // if (type == 'FREEdelevery') {
+                //     document.getElementById(type + '-cost').innerText = 0;
+                // }
                 if (type == 'delevery') {
                     document.getElementById(type + '-cost').innerText = 20;
                 }
@@ -177,7 +177,7 @@
             function calculateTotal() {
                 // const storageCost = getInputValue('storage');
                 // const memoryCost = getInputValue('memory'); 
-                const memoryCost = document.getElementById("16memory-cost").innerText;
+                const memoryCost = document.getElementById("memory-cost").innerText;
                 const memoryCostAmount = parseFloat(memoryCost);
                 const storageCost = document.getElementById("storage-cost").innerText;
                 const storageCostAmount = parseFloat(storageCost);
@@ -193,11 +193,19 @@
                 //  const grandTotal = totalPrice - save;
                 //  document.getElementById("sub-total").innerText = grandTotal;
             }
+
             function getInputValue(type) {
                 const chargeType = document.getElementById(type + '-cost');
                 const costAmount = parseFloat(chargeType);
                 return costAmount;
             }
+        //     const stCost = document.getElementById("1TBstorage");
+        //     stCost.addEventListener("click", function () {
+        //         document.getElementById("storage-cost").innerText = 0;
+            
+
+        // })
+
 
     </script>
 </body>
